@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Github01Icon, NewTwitterRectangleIcon, Linkedin01Icon, Mail01Icon } from '@hugeicons/core-free-icons';
 
 const socials = [
-    { icon: Github, href: "https://github.com/majnioui", label: "GitHub" },
-    { icon: Twitter, href: "https://x.com/m_majnioui", label: "X" },
-    { icon: Linkedin, href: "https://linkedin.com/in/elmajnioui", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:contact@majnioui.xyz", label: "Email" }
+    { icon: Github01Icon, href: "https://github.com/majnioui", label: "GitHub" },
+    { icon: NewTwitterRectangleIcon, href: "https://x.com/m_majnioui", label: "X" },
+    { icon: Linkedin01Icon, href: "https://linkedin.com/in/elmajnioui", label: "LinkedIn" },
+    { icon: Mail01Icon, href: "mailto:contact@majnioui.xyz", label: "Email" }
 ];
 
 const Socials = () => {
@@ -26,7 +27,7 @@ const Socials = () => {
                         className="text-gray-400 hover:text-white transition-colors p-3 bg-white/5 rounded-full hover:bg-white/10 border border-white/5"
                         aria-label={social.label}
                     >
-                        <social.icon className="w-6 h-6" />
+                        <HugeiconsIcon icon={social.icon} size={24} color="currentColor" strokeWidth={1.5} />
                     </motion.a>
                 ))}
             </div>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Github01Icon } from '@hugeicons/core-free-icons';
 
 const projects = [
     {
@@ -51,7 +52,7 @@ const Projects = () => {
                             <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
                                 {project.title}
                             </h3>
-                            <Github className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+                            <HugeiconsIcon icon={Github01Icon} size={20} color="currentColor" strokeWidth={1.5} className="text-gray-400 group-hover:text-white transition-colors" />
                         </div>
                         <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                             {project.description}
