@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { Github01Icon } from '@hugeicons/core-free-icons';
+import { Github01Icon, ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
 
 const projects = [
     {
@@ -25,17 +25,17 @@ const projects = [
 
 const Projects = () => {
     return (
-        <section className="py-20 px-8 max-w-4xl mx-auto z-10 relative">
+        <section className="space-y-8">
             <motion.h2
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="text-3xl font-bold text-white mb-12 text-center"
+                className="text-sm font-medium text-zinc-500 uppercase tracking-widest"
             >
-                Projects
+                Selected Works
             </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-12">
                 {projects.map((project, index) => (
                     <motion.a
                         key={index}
@@ -46,23 +46,30 @@ const Projects = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
-                        className="group block p-6 bg-white/5 rounded-xl hover:bg-white/10 transition-colors border border-white/10 hover:border-white/20 backdrop-blur-sm"
+                        className="group block space-y-4"
                     >
-                        <div className="flex justify-between items-start mb-4">
-                            <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
-                                {project.title}
-                            </h3>
-                            <HugeiconsIcon icon={Github01Icon} size={20} color="currentColor" strokeWidth={1.5} className="text-gray-400 group-hover:text-white transition-colors" />
+                        <div className="aspect-video w-full bg-zinc-900/50 rounded-lg border border-white/5 overflow-hidden group-hover:border-white/10 transition-colors">
+                            {/* Placeholder for image */}
+                            <div className="w-full h-full bg-gradient-to-br from-zinc-800/20 to-zinc-900/20" />
                         </div>
-                        <p className="text-gray-400 mb-4 text-sm leading-relaxed">
-                            {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                            {project.tags.map(tag => (
-                                <span key={tag} className="text-xs px-2 py-1 rounded-full bg-white/5 text-gray-300 border border-white/5">
-                                    {tag}
-                                </span>
-                            ))}
+
+                        <div className="space-y-2">
+                            <div className="flex justify-between items-baseline">
+                                <h3 className="text-xl font-medium text-zinc-100 group-hover:text-white transition-colors">
+                                    {project.title}
+                                </h3>
+                                <HugeiconsIcon icon={ArrowUpRight01Icon} size={18} className="text-zinc-600 group-hover:text-zinc-400 transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300" />
+                            </div>
+                            <p className="text-zinc-400 text-base font-light leading-relaxed max-w-xl">
+                                {project.description}
+                            </p>
+                            <div className="flex flex-wrap gap-3 pt-1">
+                                {project.tags.map(tag => (
+                                    <span key={tag} className="text-xs font-medium text-zinc-600">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
                     </motion.a>
                 ))}

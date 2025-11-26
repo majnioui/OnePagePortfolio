@@ -11,27 +11,34 @@ const socials = [
 
 const Socials = () => {
     return (
-        <section className="py-20 px-8 text-center z-10 relative">
-            <div className="flex justify-center gap-8">
+        <section className="flex flex-col gap-8">
+            <motion.h2
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                className="text-sm font-medium text-zinc-500 uppercase tracking-widest"
+            >
+                Connect
+            </motion.h2>
+            <div className="flex gap-6">
                 {socials.map((social, index) => (
                     <motion.a
                         key={index}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        whileHover={{ scale: 1.1, y: -5 }}
                         transition={{ delay: index * 0.1 }}
-                        className="text-gray-400 hover:text-white transition-colors p-3 bg-white/5 rounded-full hover:bg-white/10 border border-white/5"
+                        className="text-zinc-400 hover:text-white transition-colors"
                         aria-label={social.label}
                     >
-                        <HugeiconsIcon icon={social.icon} size={24} color="currentColor" strokeWidth={1.5} />
+                        <HugeiconsIcon icon={social.icon} size={24} strokeWidth={1.5} />
                     </motion.a>
                 ))}
             </div>
-            <footer className="mt-12 text-gray-600 text-sm">
+            <footer className="mt-12 text-zinc-800 text-sm font-mono">
                 © {new Date().getFullYear()} majnioui.xyz
             </footer>
         </section>
