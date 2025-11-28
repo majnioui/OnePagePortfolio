@@ -6,7 +6,7 @@ const socials = [
     { icon: Github01Icon, href: "https://github.com/majnioui", label: "GitHub" },
     { icon: NewTwitterRectangleIcon, href: "https://x.com/m_majnioui", label: "X" },
     { icon: Linkedin01Icon, href: "https://linkedin.com/in/elmajnioui", label: "LinkedIn" },
-    { icon: Mail01Icon, href: "mailto:contact@majnioui.xyz", label: "Email" }
+    { icon: Mail01Icon, href: "mailto:mo@majnioui.me", label: "Email" }
 ];
 
 const Hero = () => {
