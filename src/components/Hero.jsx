@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Github01Icon, NewTwitterRectangleIcon, Linkedin01Icon, Mail01Icon } from '@hugeicons/core-free-icons';
 
+
 const socials = [
     { icon: Github01Icon, href: "https://github.com/majnioui", label: "GitHub" },
     { icon: NewTwitterRectangleIcon, href: "https://x.com/m_majnioui", label: "X" },
@@ -19,7 +20,7 @@ const Hero = () => {
                 className="space-y-8"
             >
                 <div className="space-y-6">
-                    <h1 className="h-[40rem] flex items-center justify-center text-6xl md:text-8xl font-bold tracking-tighter text-white">
+                    <h1 className="h-[40rem] flex items-center justify-center gap-4 text-6xl md:text-8xl font-bold tracking-tighter text-white">
                         majnioui.xyz
                     </h1>
                     <div className="flex flex-col md:flex-row gap-2 md:gap-6 text-xl md:text-2xl text-zinc-400 font-light tracking-wide">
