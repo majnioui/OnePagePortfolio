@@ -9,7 +9,7 @@ function App() {
     <main className="min-h-screen relative selection:bg-white/20 overflow-hidden">
       <Background />
       <SpinningText radius={4} className="absolute top-6 left-6 z-50 w-[6rem] h-[6rem] text-sm font-normal text-zinc-400">
-        Mo El Majnioui • Portfolio • 1995 •
+        Moe El Majnioui • Portfolio • 1995 •
       </SpinningText>
       <div className="relative z-10 max-w-3xl mx-auto px-6 py-24 md:py-32 flex flex-col gap-24 md:gap-32">
         <Hero />

@@ -9,21 +9,21 @@ const projects = [
         description: "Real-time Fantasy Premier League analytics with live points tracking, player statistics, fixture difficulty ratings, and transfer insights.",
         link: "https://fplradar.com",
         tags: ["Tanstack Start", "Shadcn", "Tailwind CSS", "Bun"],
-        image: "/image01.jpg"
+        image: "/image01.webp"
     },
     {
         title: "Minimal NextJS Portfolio/blog",
         description: "A minimalistic portfolio/blog website built with Next.js",
         link: "https://github.com/majnioui/minimal-nextjs-blog",
         tags: ["NextJS", "MDX", "Tailwind CSS"],
-        image: "/image01.jpg"
+        image: "/image02.webp"
     },
     {
         title: "Simple Portfolio",
         description: "Something experimental and fun.",
         link: "https://majnioui.github.io/Personal-portfolio/",
         tags: ["JavaScript", "HTML", "CSS"],
-        image: "/image03.png"
+        image: "/image03.webp"
     }
 ];
 

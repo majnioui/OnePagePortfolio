@@ -20,7 +20,7 @@ const Hero = () => {
                 className="space-y-8"
             >
                 <div className="space-y-6">
-                    <h1 className="h-[40rem] flex items-center justify-center gap-4 text-6xl md:text-8xl font-bold tracking-tighter text-white">
+                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white">
                         majnioui.xyz
                     </h1>
                     <div className="flex flex-col md:flex-row gap-2 md:gap-6 text-xl md:text-2xl text-zinc-400 font-light tracking-wide">
