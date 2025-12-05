@@ -1,16 +1,65 @@
-# React + Vite
+# OnePage Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist, professional portfolio website built with modern web technologies.
 
-Currently, two official plugins are available:
+[![Demo Preview](public/demo.png)](https://majnioui.xyz)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[**Visit Live Site**](https://majnioui.xyz)
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Minimalist Design**: Clean aesthetics with a focus on typography and spacing.
+- **Responsive**: Fully responsive layout that works on all devices.
+- **Fast Performance**: Built with Vite for lightning-fast development and production builds.
+- **Modern Stack**: Utilizes the latest React features and TailwindCSS for styling.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **[React](https://react.dev/)**: UI Library
+- **[Vite](https://vitejs.dev/)**: Build Tool
+- **[TailwindCSS](https://tailwindcss.com/)**: Utility-first CSS Framework
+- **[Framer Motion](https://www.framer.com/motion/)**: Animations
+- **[Bun](https://bun.sh/)**: JavaScript Runtime & Package Manager
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- [Bun](https://bun.sh/) (v1.0 or later)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/majnioui/OnePagePortfolio.git
+   cd OnePagePortfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   bun install
+   ```
+
+### Usage
+
+Start the development server:
+
+```bash
+bun dev
+```
+
+Build for production:
+
+```bash
+bun run build
+```
+
+Preview the production build:
+
+```bash
+bun run preview
+```
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
