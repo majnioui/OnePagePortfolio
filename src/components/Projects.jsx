@@ -1,7 +1,6 @@
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
-import { useState, useRef } from 'react';
 
 const projects = [
     {
@@ -50,114 +49,85 @@ const cardVariants = {
     }
 };
 
-const ProjectCard = ({ project, index }) => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isHovered, setIsHovered] = useState(false);
-    const cardRef = useRef(null);
-
-    const handleMouseMove = (e) => {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        setMousePosition({ x, y });
-    };
-
+// Reveal Card Component
+const RevealCard = ({ project, index }) => {
     return (
-        <motion.div
-            ref={cardRef}
+        <motion.a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
             variants={cardVariants}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            style={{
-                transform: isHovered 
-                    ? `perspective(1000px) rotateX(${(mousePosition.y - 50) * 0.1}deg) rotateY(${(mousePosition.x - 50) * -0.1}deg)` 
-                    : 'perspective(1000px) rotateX(0) rotateY(0)',
-            }}
-            className="group relative aspect-[4/3] rounded-3xl overflow-hidden bg-zinc-900/50"
+            className="group relative block aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-black" />
-            
-            <img
-                src={project.image}
-                alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-700"
-            />
+            {/* Image Layer */}
+            <div className="absolute inset-0 overflow-hidden">
+                <motion.img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-fill object-center"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+                />
+            </div>
 
-            <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-overlay"
-                style={{
-                    background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(255,255,255,0.4) 0%, transparent 50%)`,
-                }}
-            />
+            {/* Subtle vignette - always visible */}
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-transparent to-transparent pointer-events-none" />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
+            {/* Hover Overlay - slides up */}
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/95 to-zinc-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-            <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10 group-hover:ring-white/20 transition-all duration-700 pointer-events-none" />
-
-            <div className="absolute top-4 left-4">
-                <span className="text-xs font-mono text-white/30 group-hover:text-white/60 transition-colors duration-500">
+            {/* Index Number - Top Left (always visible, faded) */}
+            <div className="absolute top-5 left-5 z-10">
+                <span className="text-sm font-mono text-white/40 group-hover:text-white/60 transition-colors duration-300">
                     0{index + 1}
                 </span>
             </div>
 
-            <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-4 right-4"
-                onClick={(e) => e.stopPropagation()}
-            >
-                <motion.div 
-                    className="w-9 h-9 rounded-full bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-all cursor-pointer"
-                    animate={isHovered ? { rotate: 45 } : { rotate: 0 }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-                >
-                    <HugeiconsIcon icon={ArrowUpRight01Icon} size={16} className="text-white/70" />
-                </motion.div>
-            </a>
-
-            <div className="absolute inset-x-4 bottom-4 space-y-3">
-                <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-lg md:text-xl font-semibold text-white truncate">
-                        {project.title}
-                    </h3>
+            {/* Arrow - Top Right (reveals on hover) */}
+            <div className="absolute top-5 right-5 z-10">
+                <div className="w-10 h-10 rounded-full border border-white/0 group-hover:border-white/30 bg-white/0 group-hover:bg-white/10 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    <HugeiconsIcon icon={ArrowUpRight01Icon} size={18} className="text-white" />
                 </div>
+            </div>
 
-                <motion.p 
-                    className="text-sm text-zinc-400 line-clamp-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                >
+            {/* Content Panel - slides up from bottom */}
+            <div className="absolute inset-x-0 bottom-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                {/* Title - always partially visible */}
+                <h3 className="text-xl md:text-2xl font-medium text-white mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
+                    {project.title}
+                </h3>
+
+                {/* Description - reveals on hover */}
+                <p className="text-zinc-400 text-sm font-light leading-relaxed mb-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 delay-100">
                     {project.description}
-                </motion.p>
+                </p>
 
-                <motion.div 
-                    className="flex flex-wrap gap-1.5"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                    transition={{ duration: 0.4, delay: 0.15 }}
-                >
-                    {project.tags.slice(0, 3).map((tag) => (
+                {/* Tags - reveal with stagger effect */}
+                <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 delay-150">
+                    {project.tags.map((tag, i) => (
                         <span
                             key={tag}
-                            className="text-[10px] md:text-xs font-medium text-zinc-300 bg-white/10 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-white/5"
+                            className="text-xs font-medium text-zinc-300 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10"
                         >
                             {tag}
                         </span>
                     ))}
-                    {project.tags.length > 3 && (
-                        <span className="text-[10px] md:text-xs font-medium text-zinc-500 px-2.5 py-1">
-                            +{project.tags.length - 3}
-                        </span>
-                    )}
-                </motion.div>
+                </div>
             </div>
-        </motion.div>
+
+            {/* Border highlight on hover */}
+            <div className="absolute inset-0 rounded-2xl border border-white/0 group-hover:border-white/20 transition-colors duration-500 pointer-events-none" />
+
+            {/* Minimal title hint at bottom when not hovered */}
+            <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                <span className="text-sm font-medium text-white/80 truncate">
+                    {project.title}
+                </span>
+                <span className="text-xs text-white/40 flex-shrink-0 ml-2">
+                    View →
+                </span>
+            </div>
+        </motion.a>
     );
 };
 
@@ -182,7 +152,7 @@ const Projects = () => {
                 className="grid grid-cols-1 md:grid-cols-2 gap-5"
             >
                 {projects.map((project, index) => (
-                    <ProjectCard key={project.title} project={project} index={index} />
+                    <RevealCard key={project.title} project={project} index={index} />
                 ))}
             </motion.div>
         </section>
