@@ -15,7 +15,7 @@ function App() {
         <Hero />
         <Projects />
         <footer className="text-zinc-800 text-sm font-mono">
-          © {new Date().getFullYear()} majnioui.xyz
+          © {new Date().getFullYear()} majnioui.me
         </footer>
       </div>
     </main>

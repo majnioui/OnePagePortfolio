@@ -2,9 +2,9 @@
 
 A minimalist, professional portfolio website built with modern web technologies.
 
-[![Demo Preview](public/demo.png)](https://majnioui.xyz)
+[![Demo Preview](public/demo.png)](https://majnioui.me)
 
-[**Visit Live Site**](https://majnioui.xyz)
+[**Visit Live Site**](https://majnioui.me)
 
 ## 🚀 Features
 

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Github01Icon, NewTwitterRectangleIcon, Linkedin01Icon, Mail01Icon } from '@hugeicons/core-free-icons';
 
@@ -39,7 +38,7 @@ const Socials = () => {
                 ))}
             </div>
             <footer className="mt-12 text-zinc-800 text-sm font-mono">
-                © {new Date().getFullYear()} majnioui.xyz
+                © {new Date().getFullYear()} majnioui.me
             </footer>
         </section>
     );
