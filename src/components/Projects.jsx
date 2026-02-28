@@ -103,7 +103,7 @@ const RevealCard = ({ project, index }) => {
 
                 {/* Tags - reveal with stagger effect */}
                 <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 delay-150">
-                    {project.tags.map((tag, i) => (
+                    {project.tags.map((tag) => (
                         <span
                             key={tag}
                             className="text-xs font-medium text-zinc-300 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10"
