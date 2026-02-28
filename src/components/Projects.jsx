@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
 
@@ -57,7 +56,7 @@ const RevealCard = ({ project, index }) => {
             target="_blank"
             rel="noopener noreferrer"
             variants={cardVariants}
-            className="group relative block aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer"
+            className="group relative block aspect-4/3 rounded-2xl overflow-hidden cursor-pointer"
         >
             {/* Image Layer */}
             <div className="absolute inset-0 overflow-hidden">
@@ -71,10 +70,10 @@ const RevealCard = ({ project, index }) => {
             </div>
 
             {/* Subtle vignette - always visible */}
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-linear-to-t from-zinc-950/40 via-transparent to-transparent pointer-events-none" />
 
             {/* Hover Overlay - slides up */}
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/95 to-zinc-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/95 to-zinc-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Index Number - Top Left (always visible, faded) */}
             <div className="absolute top-5 left-5 z-10">
@@ -123,7 +122,7 @@ const RevealCard = ({ project, index }) => {
                 <span className="text-sm font-medium text-white/80 truncate">
                     {project.title}
                 </span>
-                <span className="text-xs text-white/40 flex-shrink-0 ml-2">
+                <span className="text-xs text-white/40 shrink-0 ml-2">
                     View →
                 </span>
             </div>
